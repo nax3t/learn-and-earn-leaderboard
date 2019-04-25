@@ -15,11 +15,11 @@ router.get('/login', getLogin);
 /* POST /admin/login */
 router.post('/login', postLogin);
 
-/* GET /admin/login */
-router.get('/register', asyncErrorHandler(getRegister));
+// /* GET /admin/register */
+// router.get('/register', asyncErrorHandler(getRegister));
 
-/* POST /admin/login */
-router.post('/register', asyncErrorHandler(postRegister));
+//  POST /admin/register 
+// router.post('/register', asyncErrorHandler(postRegister));
 
 /* GET /admin/logout */
 router.get('/logout', getLogout);

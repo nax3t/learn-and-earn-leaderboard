@@ -23,7 +23,7 @@ module.exports = {
 	/* POST /admin/login */
 	postLogin (req, res, next) {
 		passport.authenticate('local', { 
-			successRedirect: '/weeks',
+			successRedirect: '/admin/weeks',
 			failureRedirect: '/admin/login'
 		})(req, res, next);
 	},

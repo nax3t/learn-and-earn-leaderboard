@@ -1,0 +1,13 @@
+<% layout('layouts/boilerplate') -%>
+<h1>This is the Admin Weeks page!</h1>
+
+<% if (weeks && weeks.length > 0) { %>
+<h2>Weeks</h2>
+	<% weeks.forEach(week => { %>
+		<p><%= week.dateRange %></p>
+	<a href="/admin/weeks/<%= week._id %>">Winners</a>
+	<% }); %>
+<% } else { %>
+	<h2>No weeks yet!</h2>
+<% } %>
+

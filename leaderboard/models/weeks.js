@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
 const weekSchema = new mongoose.Schema({
-	dateRange: {
-		type: String,
-		default: new Date().toDateString()	
-	},
+	dateRange: String,
 	winners: [
 		{
 			name: String,

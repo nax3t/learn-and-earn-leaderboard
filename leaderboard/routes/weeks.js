@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var { asyncErrorHandler } = require('../middleware');
 var {
-	getNewWeek,
 	postAdminWeek,
 	getAdminWeeks,
+	getNewWeek,
 	getAdminShowWeek,
 	getEditWeek,
 	updateWeek,
