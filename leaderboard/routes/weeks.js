@@ -5,7 +5,6 @@ var {
 	postAdminWeek,
 	getAdminWeeks,
 	getNewWeek,
-	getAdminShowWeek,
 	getEditWeek,
 	updateWeek,
 	deleteWeek
@@ -19,9 +18,6 @@ router.post('/', asyncErrorHandler(postAdminWeek));
 
 /* GET /admin/weeks */
 router.get('/', asyncErrorHandler(getAdminWeeks));
-
-/* GET admin/weeks/:id */
-router.get('/:id', asyncErrorHandler(getAdminShowWeek));
 
 /* GET admin/weeks/:id/edit */
 router.get('/:id/edit', asyncErrorHandler(getEditWeek));

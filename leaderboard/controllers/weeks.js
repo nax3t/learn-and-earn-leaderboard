@@ -37,24 +37,33 @@ module.exports = {
 		});
 	},
 
-	/* GET admin/weeks/:id */
-	async getAdminShowWeek (req, res, next) {
-		let week = await Week.findById(req.params.id);
-	  res.render('weeks/show-week', { week });
-	},
-
 	/* GET admin/weeks/:id/edit */
 	async getEditWeek (req, res, next) {
-	  res.send('GET admin/weeks/:id/edit');
+		let week = await Week.findById(req.params.id);
+	  res.render('weeks/edit', { week });
 	},
 
 	/* PUT admin/weeks/:id */
 	async updateWeek (req, res, next) {
-	  res.send('PUT admin/weeks/:id');
+	  let week = await Week.findById(req.params.id);
+	  week.winners = [
+	 			{ place: '1st', name: req.body.first },
+	 			{ place: '2nd', name: req.body.second },
+	 			{ place: '3rd', name: req.body.third }
+ 			];
+ 		week.dateRange = req.body.dateRange;
+	  week.save();
+	  res.redirect('/admin/weeks');
 	},
 
 	/* DELETE admin/weeks/:id */
 	async deleteWeek (req, res, next) {
-	  res.send('DELETE admin/weeks/:id');
+		await Week.findByIdAndRemove(req.params.id, (err) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.redirect('back');				
+			}
+		});
 	}
 };

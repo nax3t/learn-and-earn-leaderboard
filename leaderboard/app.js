@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const engine = require('ejs-mate');
 const passport = require('passport');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const User = require('./models/users');
 // const Week = require('./models/weeks');
 
@@ -43,6 +44,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 // Configure Passport and Sessions =========================
 
