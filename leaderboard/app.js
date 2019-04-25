@@ -98,21 +98,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-// seed the database ========================================
-
-// Week.create({
-// 	winners: [ 
-// 		{name: "Louli", place: "1st"},
-// 		{name: "Devendra", place: "2nd"},
-// 		{name: "Lucas", place: "3rd"}
-// 	]}, () => {
-// 	console.log('week created!');
-// });
-
-// Admin.create({
-// 	isAdmin: true
-// }, () => {
-// 	console.log('admin created!')
-// });
-
 module.exports = app;

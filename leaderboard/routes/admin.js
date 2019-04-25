@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var { asyncErrorHandler } = require('../middleware');
+var { asyncErrorHandler,
+			isLoggedIn } = require('../middleware');
 var {
 	getLogin,
 	postLogin,
@@ -22,6 +23,6 @@ router.post('/login', postLogin);
 // router.post('/register', asyncErrorHandler(postRegister));
 
 /* GET /admin/logout */
-router.get('/logout', getLogout);
+router.get('/logout', isLoggedIn, getLogout);
 
 module.exports = router;
