@@ -1,15 +1,38 @@
+// Require dependencies ====================================
+
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const engine = require('ejs-mate');
+const passport = require('passport');
+const session = require('express-session');
+const User = require('./models/users');
+// const Week = require('./models/weeks');
 
-const index = require('./routes/index');
-const users = require('./routes/users');
+// Require Routes ==========================================
+
+const indexRoutes = require('./routes/index');
+const adminRoutes = require('./routes/admin');
+const weeksRoutes = require('./routes/weeks');
 
 const app = express();
 
-// view engine setup
+// Connect with the database ===============================
+mongoose.connect('mongodb://localhost:27017/leaderboard', { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log('Connected to the database!');
+});
+
+// use ejs-locals for all ejs templates:
+app.engine('ejs', engine);
+
+// view engine setup =======================================
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -21,19 +44,42 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+// Configure Passport and Sessions =========================
 
-// catch 404 and forward to error handler
+app.use(
+  session({
+    secret: 'LEARN & EARN leaderboard',
+    resave: false,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Mount Routes ============================================
+
+app.use('/', indexRoutes);
+app.use('/admin', adminRoutes);
+app.use('/admin/weeks', weeksRoutes);
+
+// catch 404 and forward to error handler ==================
+
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handler
+// error handler ===========================================
+
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
+  req.user
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -41,5 +87,22 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// seed the database ========================================
+
+// Week.create({
+// 	winners: [ 
+// 		{name: "Louli", place: "1st"},
+// 		{name: "Devendra", place: "2nd"},
+// 		{name: "Lucas", place: "3rd"}
+// 	]}, () => {
+// 	console.log('week created!');
+// });
+
+// Admin.create({
+// 	isAdmin: true
+// }, () => {
+// 	console.log('admin created!')
+// });
 
 module.exports = app;

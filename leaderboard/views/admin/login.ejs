@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+<h1>This is the login page!</h1>
+
+<form action="/admin/login" method="POST">
+	<div>
+		<input type="text" name="user[username]">
+	</div>
+	<div>
+		<input type="password" name="password">
+	</div>
+	<div>
+		<p>Are you the Admin?</p>
+		<input type="radio" id="yes-input" name="user[isAdmin]" value="true">
+		<label for="yes-input">Yes</label>
+		<br />
+		<input type="radio" id="no-input" name="user[isAdmin]" value="false">
+		<label for="no-input">No</label>
+	</div>
+
+	<input type="submit" value="Login">
+
+</form>

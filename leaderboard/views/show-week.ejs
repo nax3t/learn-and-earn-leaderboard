@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>This is the Week Show page</h1>
+
+<h3><%= week.dateRange %></h3>
+<ul>
+	<% week.winners.forEach(winner => { %>
+	<li>
+		<p><span style="font-weight: 700;"><%= winner.place%></span> - <%= winner.name %></p>
+	</li>
+	<% }); %>
+</ul>

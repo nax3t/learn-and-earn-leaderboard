@@ -1,0 +1,8 @@
+<% layout('layouts/boilerplate') -%>
+
+<h1>This is the weeks page!</h1>
+
+<% weeks.forEach(week => { %>
+	<p><%= week.dateRange %></p>
+	<a href="/weeks/<%= week._id %>">See the winners!</a>		
+<% }); %>
