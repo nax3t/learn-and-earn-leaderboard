@@ -1,12 +1,31 @@
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/about">About</a></li>
-	<% if (currentUser) { %>
-	<li><a href="/admin/weeks">Weeks</a></li>
-		<li><a href="/admin/weeks/new">New Week</a></li>
-		<li><a href="/admin/logout">Logout</a></li>
-	<% } else { %>
-	<li><a href="/weeks">Weeks</a></li>
-		<li><a href="/admin/login">Login</a></li>
-	<% } %>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Learn&Earn!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+			<% if (currentUser) { %>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/admin/weeks/new">New Week</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/admin/logout">Logout</a>
+	      </li>
+      <% } else { %>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/weeks">Weeks</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="admin/login">Login</a>
+	      </li>
+	      <% }; %>
+    </ul>
+  </div>
+</nav>
