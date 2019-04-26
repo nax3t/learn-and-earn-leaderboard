@@ -13,7 +13,7 @@ module.exports = {
     res.redirect('/admin/login');
 	},
 	// Check if user is Admin
-	requireAdmin: (req, res, next) => {
+	isAdmin: (req, res, next) => {
 		if (req.user.isAdmin) {
 			return next();
 		}

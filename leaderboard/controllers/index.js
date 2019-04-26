@@ -1,4 +1,4 @@
-const Week = require('../models/weeks');
+const Week = require('../models/week');
 
 module.exports = {
 
@@ -14,18 +14,13 @@ module.exports = {
 
 	/* GET weeks page. */
 	async getWeeks (req, res, next) {
-		await Week.find({}, (err, weeks) => {
-			if (err) {
-				console.log(err);
-			} else {
-				res.render('weeks', { weeks });
-			}
-		});
+		const weeks = await Week.find({});
+		res.render('weeks', { weeks });
 	},
 
 	/* GET week show page. */
 	async getShowWeek (req, res, next) {
-		let week = await Week.findById(req.params.id);		
+		const week = await Week.findById(req.params.id);		
 		res.render('show-week', { week });
 	}
 };

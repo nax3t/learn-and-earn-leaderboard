@@ -10,7 +10,7 @@ const engine = require('ejs-mate');
 const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const User = require('./models/users');
+const User = require('./models/user');
 // const Week = require('./models/weeks');
 
 // Require Routes ==========================================
@@ -67,11 +67,19 @@ passport.deserializeUser(User.deserializeUser());
 // define locals
 
 app.use(function(req, res, next) {
+  // always logged in
   req.user = {
     username: 'lucas',
     isAdmin: true
   };
+  // user authentication
   res.locals.currentUser = req.user;
+  // set flash messages
+  res.locals.success = req.session.success || '';
+  delete req.session.success;
+  res.locals.error = req.session.error || '';
+  delete req.session.error;
+  // continue on to next function
   next();
 });
 
@@ -92,14 +100,9 @@ app.use((req, res, next) => {
 // error handler ===========================================
 
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  req.user
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  console.log(err);
+  req.session.success = err;
+  res.redirect('back');
 });
 
 module.exports = app;
