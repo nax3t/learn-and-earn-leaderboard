@@ -67,6 +67,10 @@ passport.deserializeUser(User.deserializeUser());
 // define locals
 
 app.use(function(req, res, next) {
+  req.user = {
+    username: 'lucas',
+    isAdmin: true
+  };
   res.locals.currentUser = req.user;
   next();
 });

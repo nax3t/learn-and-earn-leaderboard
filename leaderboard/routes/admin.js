@@ -5,10 +5,9 @@ var { asyncErrorHandler,
 var {
 	getLogin,
 	postLogin,
-	getRegister,
-	postRegister,
-	getLogout
-} = require('../controllers/admin');
+	// getRegister,
+	// postRegister,
+	getLogout } = require('../controllers/admin');
 
 /* GET /admin/login */
 router.get('/login', getLogin);
@@ -19,7 +18,7 @@ router.post('/login', postLogin);
 // /* GET /admin/register */
 // router.get('/register', asyncErrorHandler(getRegister));
 
-//  POST /admin/register 
+//  POST /admin/register  
 // router.post('/register', asyncErrorHandler(postRegister));
 
 /* GET /admin/logout */

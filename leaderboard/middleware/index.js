@@ -5,12 +5,19 @@ module.exports = {
 		Promise.resolve(fn(req, res, next)).catch(next);
 	},
 
-	isLoggedIn:  function (req, res, next){
+	// Authentication middleware
+	isLoggedIn: (req, res, next) => {
     if(req.isAuthenticated()){
         return next();
     }
     res.redirect('/admin/login');
+	},
+	// Check if user is Admin
+	requireAdmin: (req, res, next) => {
+		if (req.user.isAdmin) {
+			return next();
+		}
+		res.redirect('/admin/login');
 	}
-
 	
 };
