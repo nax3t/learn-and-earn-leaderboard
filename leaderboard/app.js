@@ -100,8 +100,11 @@ app.use((req, res, next) => {
 // error handler ===========================================
 
 app.use((err, req, res, next) => {
+  console.log('=========================');
   console.log(err);
-  req.session.success = err;
+  console.log('=========================');
+  req.session.error = err.message;
+  eval(require('locus'));
   res.redirect('back');
 });
 

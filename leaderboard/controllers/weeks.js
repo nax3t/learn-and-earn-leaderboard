@@ -18,6 +18,7 @@ module.exports = {
  		};
  		const week = await Week.create(newWeek);
 		console.log(week);
+		req.session.success = 'Week created successfully!'
 		res.redirect('/admin/weeks'); 			
  	},
 
@@ -43,12 +44,14 @@ module.exports = {
  			];
  		week.dateRange = req.body.dateRange;
 	  week.save();
-	  res.redirect('/admin/weeks');
+	  		req.session.success = 'Week edited successfully!'
+res.redirect('/admin/weeks');
 	},
 
 	/* DELETE admin/weeks/:id */
 	async deleteWeek (req, res, next) {
 		await Week.findByIdAndRemove(req.params.id);
+		req.session.success = 'Week deleted successfully!'
 		res.redirect('back');
 	}
 };

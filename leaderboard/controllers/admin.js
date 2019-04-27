@@ -19,6 +19,7 @@ module.exports = {
 	/* GET /admin/logout */
 	getLogout (req, res, next) {
 		req.logout();
+		req.session.success = 'Logged you out';
 	  res.redirect('/weeks');
 	},
 }
