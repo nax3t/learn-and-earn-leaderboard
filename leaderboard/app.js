@@ -104,7 +104,6 @@ app.use((err, req, res, next) => {
   console.log(err);
   console.log('=========================');
   req.session.error = err.message;
-  eval(require('locus'));
   res.redirect('back');
 });
 
