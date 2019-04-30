@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') %>
+<h1>This is the new week page!</h1>
+<form action="/admin/weeks" method="POST">
+	<div>
+		<p>1st Place goes to:</p>
+		<input type="text" name="first">
+	</div>
+	<div>
+		<p>2nd Place goes to:</p>
+		<input type="text" name="second">
+	</div>
+	<div>
+		<p>3rd Place goes to:</p>
+		<input type="text" name="third">
+	</div>
+	<input id="week" type="hidden" name="weekDays" value="">
+	<input type="submit" value="New Week">
+</form>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD9/f0AAAAAAP///wD4+PgA8fHxAPr6+gD8/PwA7u7uAP7+/gDw8PAA+fn5APLy8gD7+/sADAzoAPT09AAAAAAAh4cRGHERuYfq4d3RHd0T6nJx0R3RHRByJxEd0R3REYdxeBERERFQEiEnEREREbkXchEZLdchEXInESYScXIRh3F4eRchJ1ASYWFqRkZGGxTLEcERERwRy3gRHYeH0RF4JyHd3d3dGYdycd3d3d0QcicnHd3d0bmHcnhxEREXUHIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+	  <title>Title</title>
+	  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	  <link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+	
+		<% include ../partials/navbar %>
+		<div class="container pt-4">
+		<% include ../partials/flash-messages %>
+			<%- body -%>
+ 		</div>
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="/scripts/leaderboard.js"></script>
+	</body>
+</html>
+  

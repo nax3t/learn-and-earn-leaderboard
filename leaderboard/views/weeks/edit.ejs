@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>This is the edit week page!</h1>
+<form action="/admin/weeks/<%= week._id %>?_method=PUT" method="POST">
+	<div>
+		<p>1st Place goes to:</p>
+		<input type="text" name="first" value="<%= week.winners[0].name %>">
+	</div>
+	<div>
+		<p>2nd Place goes to:</p>
+		<input type="text" name="second" value="<%= week.winners[1].name %>">
+	</div>
+	<div>
+		<p>3rd Place goes to:</p>
+		<input type="text" name="third" value="<%= week.winners[2].name %>">
+	</div>
+	<div>
+		<p>Week date range:</p>
+		<input id="week" type="text" name="dateRange" placeholder="Date Range" value="<%= week.dateRange %>">
+	</div>
+	<input type="submit" value="Edit Week">
+</form>

@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate') -%>
+<h1>This is the Admin Weeks page!</h1>
+
+<% if (weeks && weeks.length > 0) { %>
+<h2>Weeks</h2>
+	<% weeks.forEach(week => { %>
+		<p><%= week.dateRange %></p>
+		<ul>
+			<% week.winners.forEach(winner => { %>
+				<li><%= winner.place %> - <span style="font-weight: 900"><%= winner.name %></span></li>
+			<% }); %>
+		</ul>
+		<a href="/admin/weeks/<%= week._id %>/edit">Edit Week</a>
+		<form action="/admin/weeks/<%= week._id %>/?_method=DELETE" method="POST">
+			<input type="submit" value="Delete Week">
+		</form>
+	<% }); %>
+<% } else { %>
+	<h2>No weeks yet!</h2>
+<% } %>
+
