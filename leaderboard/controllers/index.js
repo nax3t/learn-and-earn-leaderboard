@@ -16,7 +16,10 @@ module.exports = {
 
 	/* GET weeks page. */
 	async getWeeks (req, res, next) {
-		const weeks = await Week.find({});
+		const weeks = await Week.paginate({}, {
+			page: req.query.page || 1,
+			limit: 8
+		});
 		res.render('weeks', { weeks });
 	},
 
