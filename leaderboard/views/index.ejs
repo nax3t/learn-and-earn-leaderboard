@@ -13,11 +13,7 @@
 	    <ol>
 	    	<% week.winners.forEach(winner => { %>
 			    <li>
-			      <p><%= winner.name %>
-							<% if (currentUser.isAdmin) { %>
-			      		<i class="fas fa-user-edit"></i>
-			      	<% } %>
-			      </p>
+			      <p><%= winner.name %></p>
 			    </li>
 		    <% }); %>
 		  </ol>
