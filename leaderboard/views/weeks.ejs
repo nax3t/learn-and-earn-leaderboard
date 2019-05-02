@@ -1,8 +1,34 @@
 <% layout('layouts/boilerplate') -%>
 
-<h1>This is the weeks page!</h1>
 
-<% weeks.forEach(week => { %>
-	<p><%= week.dateRange %></p>
-	<a href="/weeks/<%= week._id %>">See the winners!</a>		
-<% }); %>
+
+<div class="pagination my-2 ml-5">
+  <% if (weeks.page -1) { %>
+    <a href="/weeks?page=<%= weeks.page - 1 %>"><span class="page-btn">&lt;/</span></a>
+  <% }; %>
+  <% for (let i = 1; i <= weeks.pages; i++) { %>
+    <a href="/weeks?page=<%= i %>"
+      <%= i === parseInt(weeks.page) ? 'style=color:#000;' : '' %> ><%= i %>        
+    </a>
+  <% }; %>
+  <% if ((weeks.page) < weeks.pages) { %>
+    <a href="/weeks?page=<%= parseInt(weeks.page) + 1 %>"><span class="page-btn">&gt_</span></a>
+  <% }; %>
+</div>
+
+<table border="2">
+  <tr>
+    <th><h2>Week</h2></th>
+    <th><img width="50" src="/images/gold.png"></th>
+    <th><img width="50" src="/images/silver.png"></th>
+    <th><img width="50" src="/images/bronze.png"></th>
+  </tr>
+  <% weeks.docs.forEach(week => { %>
+	  <tr>
+	    <td><%= week.dateRange %></td>
+	    <% week.winners.forEach(winner => { %>
+	    <td><span><%= winner.name %></td>
+  	<% }); %>  
+	  </tr>
+  <% }); %>  
+</table>

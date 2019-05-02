@@ -1,21 +1,46 @@
 <% layout('layouts/boilerplate') -%>
-<h1>This is the Admin Weeks page!</h1>
 
-<% if (weeks && weeks.length > 0) { %>
-<h2>Weeks</h2>
-	<% weeks.forEach(week => { %>
-		<p><%= week.dateRange %></p>
-		<ul>
-			<% week.winners.forEach(winner => { %>
-				<li><%= winner.place %> - <span style="font-weight: 900"><%= winner.name %></span></li>
-			<% }); %>
-		</ul>
-		<a href="/admin/weeks/<%= week._id %>/edit">Edit Week</a>
-		<form action="/admin/weeks/<%= week._id %>/?_method=DELETE" method="POST">
-			<input type="submit" value="Delete Week">
-		</form>
-	<% }); %>
-<% } else { %>
-	<h2>No weeks yet!</h2>
-<% } %>
 
+<div class="m-2 pagination ml-5">
+  <% if (weeks.page -1) { %>
+    <a href="/admin/weeks?page=<%= weeks.page - 1 %>"><span class="page-btn">&lt;/</span></a>
+  <% }; %>
+  <% for (let i = 1; i <= weeks.pages; i++) { %>
+    <a href="/admin/weeks?page=<%= i %>"
+      <%= i === parseInt(weeks.page) ? 'style=color:#000;' : '' %> ><%= i %>        
+    </a>
+  <% }; %>
+  <% if ((weeks.page) < weeks.pages) { %>
+    <a href="/admin/weeks?page=<%= parseInt(weeks.page) + 1 %>"><span class="page-btn">&gt_</span></a>
+  <% }; %>
+</div>
+
+<table border="2">
+  <tr>
+    <th><h2>Week</h2></th>
+    <th><img width="50" src="/images/gold.png"></th>
+    <th><img width="50" src="/images/silver.png"></th>
+    <th><img width="50" src="/images/bronze.png"></th>
+  	<% if (currentUser.isAdmin) { %> 
+	    <th>Actions</th>
+	  <% }; %>
+  </tr>
+  <% weeks.docs.forEach(week => { %>
+	  <tr>
+	    <td><%= week.dateRange %></td>
+	    <% week.winners.forEach(winner => { %>
+	    <td><%= winner.name %></td>
+  	<% }); %> 
+  	<% if (currentUser.isAdmin) { %> 
+  		<td>
+  			<a href="/admin/weeks/<%= week._id %>/edit">
+  				<i class="fas fa-user-edit"></i> 
+  			</a>
+  			<form action="/admin/weeks/<%= week._id %>?_method=DELETE" method="POST">
+  				<button><i class="fas fa-trash-alt"></i></button>
+  			</form>  			
+  		</td>
+  	<% }; %>
+	  </tr>
+  <% }); %>  
+</table>
