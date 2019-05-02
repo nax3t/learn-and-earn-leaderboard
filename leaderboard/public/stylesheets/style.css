@@ -212,16 +212,16 @@ span.page-btn {
       Edit form
 --------------------*/
 
-.new-form-container {
+.form-container {
   position: relative;
   left: 50%;
   transform: translate(-50%);
 }
 
-.new-form-container div {
+.form-container div {
   margin: 1rem 0;
 }
 
-.new-form-container p {
+.form-container p {
   margin: 0;
 }
