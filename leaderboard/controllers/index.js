@@ -3,8 +3,10 @@ const Week = require('../models/week');
 module.exports = {
 
 	/* GET home page. */
-	getIndex (req, res, next) {
-	  res.render('index', { title: 'Express' });
+	async getIndex (req, res, next) {
+	  const weeks = await Week.find({}).sort('-date').limit(4);
+	  console.log(weeks);
+		res.render('index', { weeks });
 	},
 
 	/* GET about page. */

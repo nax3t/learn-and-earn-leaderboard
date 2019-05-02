@@ -7,7 +7,11 @@ const weekSchema = new mongoose.Schema({
 			name: String,
 			place: String
 		}
-	]
+	],
+	date: {
+		type: Number,
+		default: Date.now()
+	}
 });
 
 module.exports = mongoose.model('Week', weekSchema);
