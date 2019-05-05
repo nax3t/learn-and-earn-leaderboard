@@ -11,6 +11,7 @@ const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const User = require('./models/user');
+const seedDB = require('./seeds');
 // const Week = require('./models/weeks');
 
 // Require Routes ==========================================
@@ -20,6 +21,10 @@ const adminRoutes = require('./routes/admin');
 const weeksRoutes = require('./routes/weeks');
 
 const app = express();
+
+// Uncomment to seed the Database!
+
+// seedDB();
 
 // Connect with the database ===============================
 mongoose.connect('mongodb://localhost:27017/leaderboard', { useNewUrlParser: true });

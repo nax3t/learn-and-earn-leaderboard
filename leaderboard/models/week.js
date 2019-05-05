@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const weekSchema = new mongoose.Schema({
 	dateRange: String,
@@ -7,7 +8,13 @@ const weekSchema = new mongoose.Schema({
 			name: String,
 			place: String
 		}
-	]
+	],
+	date: {
+		type: Number,
+		default: Date.now()
+	}
 });
+
+weekSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Week', weekSchema);
