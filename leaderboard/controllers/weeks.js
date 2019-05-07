@@ -48,7 +48,7 @@ module.exports = {
  		week.dateRange = req.body.dateRange;
 	  week.save();
 	  		req.session.success = 'Week edited successfully!'
-res.redirect('/admin/weeks');
+		res.redirect('/admin/weeks');
 	},
 
 	/* DELETE admin/weeks/:id */
