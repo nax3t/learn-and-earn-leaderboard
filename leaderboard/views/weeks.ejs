@@ -1,20 +1,6 @@
 <% layout('layouts/boilerplate') -%>
 
-
-
-<div class="pagination my-2 ml-5">
-  <% if (weeks.page -1) { %>
-    <a href="/weeks?page=<%= weeks.page - 1 %>"><span class="page-btn">&lt;/</span></a>
-  <% }; %>
-  <% for (let i = 1; i <= weeks.pages; i++) { %>
-    <a href="/weeks?page=<%= i %>"
-      <%= i === parseInt(weeks.page) ? 'style=color:#000;' : '' %> ><%= i %>        
-    </a>
-  <% }; %>
-  <% if ((weeks.page) < weeks.pages) { %>
-    <a href="/weeks?page=<%= parseInt(weeks.page) + 1 %>"><span class="page-btn">&gt_</span></a>
-  <% }; %>
-</div>
+<% include ./partials/paginate-weeks %>
 
 <table border="2">
   <tr>
@@ -32,3 +18,5 @@
 	  </tr>
   <% }); %>  
 </table>
+
+<% include ./partials/paginate-weeks %>
