@@ -10,6 +10,7 @@ module.exports = {
     if(req.isAuthenticated()){
         return next();
     }
+    req.session.error = 'You need to login first!';
     res.redirect('/admin/login');
 	},
 	// Check if user is Admin
@@ -17,6 +18,7 @@ module.exports = {
 		if (req.user.isAdmin) {
 			return next();
 		}
+		req.session.error = 'This is not an admin account!';
 		res.redirect('/admin/login');
 	}
 	

@@ -19,6 +19,7 @@ module.exports = {
 			page: req.query.page || 1,
 			limit: 8
 		});
+		weeks.page = Number(weeks.page);
 		res.render('weeks', { weeks });
 	},
 

@@ -5,8 +5,9 @@ module.exports = {
 	async getAdminWeeks (req, res, next) {
 		const weeks = await Week.paginate({}, {
 			page: req.query.page || 1,
-			limit: 8
+			limit: 12
 		});
+		weeks.page = Number(weeks.page);
 		res.render('weeks/weeks', { weeks });
 	},
 

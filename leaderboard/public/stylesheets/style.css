@@ -59,25 +59,32 @@ footer {
 --------------------*/
 
 div.flash {
-  opacity: .7;
-  border-radius: .5rem;
+  background-color: #ffffff4f;
+  padding: 0;
+  height: 4rem;
+  border-radius: 0.5rem;
 }
 
 div.flash h3 {
-  font-size: 1rem;
+  font-size: 1.17rem;
   margin: .5rem auto;
 }
 
-div.flash.success-message {
-  background-color: #00353e;
-  border: 2px solid green;
-  color: green;
+div.flash h3 i.fas {
+  width: 4rem;
+  height: 4rem;
+  padding: 1.3rem 0 0;
+  margin-right: 1.3rem;
+  text-align: center;
+  border-radius: .5rem 0 0 .5rem;
 }
 
-div.flash.error-message {
-  background-color: #2b0004;
-  border: 2px solid red;
-  color: red;
+div.flash.success-message i.fas {
+  background-color: #0080005e;
+}
+
+div.flash.error-message i.fas {
+  background-color: #ff000082;
 }
 
 /*--------------------
@@ -291,6 +298,7 @@ figcaption {
 --------------------*/
 
 @media (max-width: 576px) {
+
   /*--Rules for md size--*/
   
   nav.navbar ul {
@@ -307,6 +315,16 @@ figcaption {
 
   h3 {
     font-size: 1.4rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  /*--Rules for cellphones--*/
+  
+  table tr th, table tr td {
+    padding: 0;
   }
 
 }
