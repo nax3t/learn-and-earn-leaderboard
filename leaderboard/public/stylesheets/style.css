@@ -55,7 +55,33 @@ footer {
 }
 
 /*--------------------
-		Leaderboard
+		 Flash-Message
+--------------------*/
+
+div.flash {
+  opacity: .7;
+  border-radius: .5rem;
+}
+
+div.flash h3 {
+  font-size: 1rem;
+  margin: .5rem auto;
+}
+
+div.flash.success-message {
+  background-color: #00353e;
+  border: 2px solid green;
+  color: green;
+}
+
+div.flash.error-message {
+  background-color: #2b0004;
+  border: 2px solid red;
+  color: red;
+}
+
+/*--------------------
+    Leaderboard
 --------------------*/
 
 .leaderboard-container {
@@ -266,13 +292,22 @@ figcaption {
 
 @media (max-width: 576px) {
   /*--Rules for md size--*/
+  
   nav.navbar ul {
     padding-left: 0;
   }
 
   section.about p {
-  width: 100%;
-}
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
 
 }
 
