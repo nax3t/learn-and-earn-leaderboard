@@ -8,7 +8,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
-const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const seedDB = require('./seeds');
