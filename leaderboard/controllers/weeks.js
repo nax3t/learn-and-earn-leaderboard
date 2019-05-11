@@ -8,7 +8,7 @@ module.exports = {
 			limit: 12
 		});
 		weeks.page = Number(weeks.page);
-		res.render('weeks/weeks', { weeks });
+		res.render('weeks/index', { weeks });
 	},
 
 	/* GET /admin/weeks/new */
@@ -31,7 +31,7 @@ module.exports = {
  		};
  		await Week.create(newWeek);
 		req.session.success = 'Week created successfully!'
-		res.redirect('/admin/index'); 			
+		res.redirect('/admin/weeks'); 			
  	},
 
 	// /* GET admin/weeks/:id/edit */
