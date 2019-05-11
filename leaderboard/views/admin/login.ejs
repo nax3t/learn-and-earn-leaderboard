@@ -1,12 +1,14 @@
 <% layout('layouts/boilerplate') %>
-<h1>This is the login page!</h1>
 
-<form action="/admin/login" method="POST">
-	<div>
-		<input type="text" name="username" placeholder="Username">
-	</div>
-	<div>
-		<input type="password" name="password" placeholder="Password">
-	</div>
-	<input type="submit" value="Login">
-</form>
+<div class="container mt-5">
+	<h1>Do you have an account? Please login<span id="dash">_</span></h1>
+	<form class="mt-5" action="/admin/login" method="POST">
+		<div class="mt-2">
+			<input type="text" name="username" placeholder="Username">
+		</div>
+		<div class="mt-2">
+			<input type="password" name="password" placeholder="Password">
+		</div>
+		<input class="mt-2" type="submit" value="Login">
+	</form>
+</div>

@@ -5,8 +5,9 @@ module.exports = {
 	async getAdminWeeks (req, res, next) {
 		const weeks = await Week.paginate({}, {
 			page: req.query.page || 1,
-			limit: 8
+			limit: 12
 		});
+		weeks.page = Number(weeks.page);
 		res.render('weeks/weeks', { weeks });
 	},
 
@@ -48,7 +49,7 @@ module.exports = {
  		week.dateRange = req.body.dateRange;
 	  week.save();
 	  		req.session.success = 'Week edited successfully!'
-res.redirect('/admin/weeks');
+		res.redirect('/admin/weeks');
 	},
 
 	/* DELETE admin/weeks/:id */
