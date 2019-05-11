@@ -8,26 +8,13 @@
     <th><img width="50" src="/images/gold.png"></th>
     <th><img width="50" src="/images/silver.png"></th>
     <th><img width="50" src="/images/bronze.png"></th>
-  	<% if (currentUser.isAdmin) { %> 
-	    <th>Actions</th>
-	  <% }; %>
   </tr>
   <% weeks.docs.forEach(week => { %>
 	  <tr>
 	    <td><%= week.dateRange %></td>
 	    <% week.winners.forEach(winner => { %>
 	    <td><%= winner.name %></td>
-  	<% }); %> 
-  	<% if (currentUser.isAdmin) { %> 
-  		<td>
-  			<a href="/admin/weeks/<%= week._id %>/edit">
-  				<i class="fas fa-user-edit"></i> 
-  			</a>
-  			<form action="/admin/weeks/<%= week._id %>?_method=DELETE" method="POST">
-  				<button><i class="fas fa-trash-alt"></i></button>
-  			</form>  			
-  		</td>
-  	<% }; %>
+  	  <% }); %> 
 	  </tr>
   <% }); %>  
 </table>

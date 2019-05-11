@@ -6,31 +6,13 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse w-100" id="navbarNav">
-    <ul class="navbar-nav w-75 justify-content-between mx-auto text-center align-items-center">
+    <ul class="navbar-nav w-75 justify-content-around mx-auto text-center align-items-center">
       <li class="nav-item">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
-			<% if (currentUser) { %>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/admin/weeks">Weeks</a>
-	      </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/weeks/new">New Week</a>
-        </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/admin/logout">Logout</a>
-	      </li>
-      <% } else { %>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/weeks">Weeks</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="admin/login">Login</a>
-	      </li>
-	      <% }; %>
     </ul>
   </div>
 </nav>

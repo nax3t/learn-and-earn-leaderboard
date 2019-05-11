@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Require dependencies ====================================
 
 const express = require('express');
@@ -10,14 +11,12 @@ const engine = require('ejs-mate');
 const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const User = require('./models/user');
 const seedDB = require('./seeds');
 // const Week = require('./models/weeks');
 
 // Require Routes ==========================================
 
 const indexRoutes = require('./routes/index');
-const adminRoutes = require('./routes/admin');
 const weeksRoutes = require('./routes/weeks');
 
 const app = express();
@@ -51,8 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-// Configure Passport and Sessions =========================
-
+// Configure Sessions =========================
 app.use(
   session({
     secret: 'LEARN & EARN leaderboard',
@@ -60,13 +58,6 @@ app.use(
     saveUninitialized: true
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(User.createStrategy());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 
 // define locals
@@ -91,7 +82,6 @@ app.use(function(req, res, next) {
 // Mount Routes ============================================
 
 app.use('/', indexRoutes);
-app.use('/admin', adminRoutes);
 app.use('/admin/weeks', weeksRoutes);
 
 // catch 404 and forward to error handler ==================
