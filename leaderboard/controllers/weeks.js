@@ -31,7 +31,7 @@ module.exports = {
  		};
  		await Week.create(newWeek);
 		req.session.success = 'Week created successfully!'
-		res.redirect('/admin/weeks'); 			
+		res.redirect('/admin/index'); 			
  	},
 
 	// /* GET admin/weeks/:id/edit */

@@ -1,0 +1,10 @@
+<% if (success && success.length) { %>
+	<div class="flash success-message container">
+		<h3><i class="fas fa-check"></i></i><%= success %></h3>
+	</div>
+<% } %>
+<% if (error && error.length) { %>
+	<div class="flash error-message container">
+		<h3><i class="fas fa-times"></i><%= error %></h3>
+	</div>
+<% } %>
