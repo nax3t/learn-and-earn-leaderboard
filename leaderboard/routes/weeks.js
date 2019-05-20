@@ -1,14 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var { asyncErrorHandler,
-				isAdmin } = require('../middleware');
-var {
+const express = require('express');
+const router = express.Router();
+const { asyncErrorHandler } = require('../middleware');
+const {
 	postAdminWeek,
 	getAdminWeeks,
-	getNewWeek,
-	getEditWeek,
-	updateWeek,
-	deleteWeek
+	getNewWeek
 } = require('../controllers/weeks');
 
 /* GET /admin/weeks/new */

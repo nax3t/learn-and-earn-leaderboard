@@ -6,7 +6,7 @@ const defineWeek = function() {
 	// Get current date
 	const today = new Date;
 	// Get date of last monday 
-	const start = today.getDate() - today.getDay() + 1;
+	const start = (today.getDate() - today.getDay() + 1) - 7;
 	// Add 6 to get date of sunday 
 	const end = start + 6;
 	// Set the actual dates to monday and sunday

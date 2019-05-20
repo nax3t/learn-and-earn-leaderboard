@@ -4,8 +4,7 @@ var { asyncErrorHandler } = require('../middleware');
 var {
 	getIndex,
 	getAbout,
-	getWeeks,
-	getShowWeek
+	getWeeks
 } = require('../controllers/index');
 
 /* GET home page. */
@@ -16,9 +15,5 @@ router.get('/about', getAbout);
 
 /* GET weeks page. */
 router.get('/weeks', asyncErrorHandler(getWeeks));
-
-
-/* GET weeks page. */
-router.get('/weeks/:id', asyncErrorHandler(getShowWeek));
 
 module.exports = router;

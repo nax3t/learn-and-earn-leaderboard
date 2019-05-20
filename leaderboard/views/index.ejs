@@ -1,25 +1,24 @@
 <% layout('layouts/boilerplate') -%>
-
+<% if (weeks && weeks.length) { %>
 <div class="leaderboard-container">
-	<% weeks.forEach(week => { %>
-	 	<div class="leaderboard">
-	    <h1>
-	      <svg class="ico-cup">
-	        <use xlink:href="#cup"></use>
-	      </svg>
-	      Leaderboard
-	  	</h1>
-	    <h2><%= week.dateRange %></h2>
-	    <ol>
-	    	<% week.winners.forEach(winner => { %>
-			    <li>
-			      <p><%= winner.name %></p>
-			    </li>
-		    <% }); %>
-		  </ol>
-		</div>
-	<% }); %>
+ 	<div class="leaderboard">
+    <h1>
+      <svg class="ico-cup">
+        <use xlink:href="#cup"></use>
+      </svg>
+      Leaderboard
+  	</h1>
+    <h2><%= weeks[0].dateRange %></h2>
+    <ol>
+    	<% weeks[0].winners.forEach(winner => { %>
+		    <li>
+		      <p><%= winner.name %></p>
+		    </li>
+	    <% }); %>
+	  </ol>
+	</div>
 </div>
+<% } %>
 
   <svg style="display: none;">
     <symbol id="cup" x="0px" y="0px"

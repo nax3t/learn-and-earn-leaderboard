@@ -9,9 +9,8 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const engine = require('ejs-mate');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const methodOverride = require('method-override');
-const seedDB = require('./seeds');
-// const Week = require('./models/weeks');
 
 // Require Routes ==========================================
 
@@ -25,7 +24,7 @@ const app = express();
 // seedDB();
 
 // Connect with the database ===============================
-mongoose.connect('mongodb://localhost:27017/leaderboard', { useNewUrlParser: true });
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -41,7 +40,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -53,6 +52,7 @@ app.use(methodOverride('_method'));
 app.use(
   session({
     secret: 'LEARN & EARN leaderboard',
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: true
   })
@@ -60,15 +60,7 @@ app.use(
 
 
 // define locals
-
 app.use(function(req, res, next) {
-  // always logged in
-  req.user = {
-    username: 'lucas',
-    isAdmin: true
-  };
-  // user authentication
-  res.locals.currentUser = req.user;
   // set flash messages
   res.locals.success = req.session.success || '';
   delete req.session.success;
