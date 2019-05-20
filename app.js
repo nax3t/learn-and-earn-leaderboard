@@ -11,6 +11,7 @@ const engine = require('ejs-mate');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const methodOverride = require('method-override');
+const helmet = require('helmet');
 
 // Require Routes ==========================================
 
@@ -39,7 +40,6 @@ app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -47,11 +47,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(helmet());
 
 // Configure Sessions =========================
 app.use(
   session({
-    secret: 'LEARN & EARN leaderboard',
+    secret: 'LEARN & EARN leaderboard blah',
+    name: 'blahblah leaderboard blah',
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: true
